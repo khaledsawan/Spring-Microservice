@@ -23,6 +23,10 @@ spring:
           uri: lb://SALE-SERVICE
           predicates:
             - Path=/sale/**       
+        - id: LISTING-SERVICE
+          uri: lb://LISTING-SERVICE
+          predicates:
+            - Path=/listing/**           
 
 eureka:
   client:

@@ -23,6 +23,11 @@ public class SaleController {
         return repository.save(sale);
     }
 
+    @GetMapping("/{id}")
+    public Optional<Sale> fetchTransactionById(@PathVariable int id){
+        return repository.findById(id);
+    }
+
     @GetMapping
     public List<Sale> getAllSales() {
         return repository.findAll();
