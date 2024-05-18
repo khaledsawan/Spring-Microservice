@@ -18,7 +18,11 @@ spring:
         - id: TRANSACTION-SERVICE
           uri: lb://TRANSACTION-SERVICE
           predicates:
-            - Path=/transaction/**    
+            - Path=/transaction/**
+        - id: SALE-SERVICE
+          uri: lb://SALE-SERVICE
+          predicates:
+            - Path=/sale/**       
 
 eureka:
   client:
