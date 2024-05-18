@@ -1,5 +1,4 @@
-package com.hexagon.transactionservice;
-
+package com.hexagon.transaction1service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class TransactionServiceApplication {
+public class Transaction1ServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TransactionServiceApplication.class, args);
+		SpringApplication.run(Transaction1ServiceApplication.class, args);
 	}
 	@Bean
 	@LoadBalanced

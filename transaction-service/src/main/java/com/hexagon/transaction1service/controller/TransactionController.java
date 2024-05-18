@@ -1,18 +1,17 @@
-package com.hexagon.transactionservice.controller;
+package com.hexagon.transaction1service.controller;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.hexagon.transactionservice.model.Transaction;
-import com.hexagon.transactionservice.repository.TransactionRepository;
-import com.hexagon.transactionservice.service.TransactionService;
+import com.hexagon.transaction1service.model.Transaction;
+import com.hexagon.transaction1service.repository.TransactionRepository;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/transaction")
 public class TransactionController {
     private final TransactionRepository repository;
 
@@ -24,6 +23,11 @@ public class TransactionController {
     public Transaction createTransaction(@RequestBody Transaction transaction) {
         return repository.save(transaction);
     }
+    @GetMapping("/{id}")
+    public Optional<Transaction> fetchTransactionById(@PathVariable int id){
+        return repository.findById(id);
+    }
+
 
     @GetMapping
     public List<Transaction> getAllTransactions() {

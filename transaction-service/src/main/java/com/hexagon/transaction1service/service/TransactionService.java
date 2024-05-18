@@ -1,9 +1,9 @@
-package com.hexagon.transactionservice.service;
+package com.hexagon.transaction1service.service;
 
 import org.springframework.stereotype.Service;
 
-import com.hexagon.transactionservice.model.Transaction;
-import com.hexagon.transactionservice.repository.TransactionRepository;
+import com.hexagon.transaction1service.model.Transaction;
+import com.hexagon.transaction1service.repository.TransactionRepository;
 
 import java.util.List;
 
