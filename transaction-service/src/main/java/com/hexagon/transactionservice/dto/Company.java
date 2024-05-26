@@ -1,5 +1,4 @@
-package com.hexagon.transaction1service.dto;
-
+package com.hexagon.transactionservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +8,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionResponse {
+public class Company {
     private int id;
-    private String name;
-    private int age;
-    private String gender;
-    private Company company;
+    private String schoolName;
+    private String location;
+    private String principalName;
 }

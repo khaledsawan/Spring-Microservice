@@ -7,26 +7,55 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: CUSTOMER-SERVICE
+        - id: customer-service
           uri: lb://CUSTOMER-SERVICE
           predicates:
             - Path=/customer/**
-        - id: COMPANY-SERVICE
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: customerServiceCircuitBreaker
+                fallbackUri: forward:/customerFallback
+
+        - id: company-service
           uri: lb://COMPANY-SERVICE
           predicates:
             - Path=/company/**
-        - id: TRANSACTION-SERVICE
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: companyServiceCircuitBreaker
+                fallbackUri: forward:/companyFallback
+
+        - id: transaction-service
           uri: lb://TRANSACTION-SERVICE
           predicates:
             - Path=/transaction/**
-        - id: SALE-SERVICE
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: transactionServiceCircuitBreaker
+                fallbackUri: forward:/transactionFallback
+
+        - id: sale-service
           uri: lb://SALE-SERVICE
           predicates:
-            - Path=/sale/**       
-        - id: LISTING-SERVICE
+            - Path=/sale/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: saleServiceCircuitBreaker
+                fallbackUri: forward:/saleFallback
+
+        - id: listing-service
           uri: lb://LISTING-SERVICE
           predicates:
-            - Path=/listing/**           
+            - Path=/listing/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: listingServiceCircuitBreaker
+                fallbackUri: forward:/listingFallback
 
 eureka:
   client:
@@ -36,3 +65,37 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerServiceCircuitBreaker:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 10
+        ring-buffer-size-in-half-open-state: 5
+        wait-duration-in-open-state: 60s
+        failure-rate-threshold: 50
+      companyServiceCircuitBreaker:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 10
+        ring-buffer-size-in-half-open-state: 5
+        wait-duration-in-open-state: 60s
+        failure-rate-threshold: 50
+      transactionServiceCircuitBreaker:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 10
+        ring-buffer-size-in-half-open-state: 5
+        wait-duration-in-open-state: 60s
+        failure-rate-threshold: 50
+      saleServiceCircuitBreaker:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 10
+        ring-buffer-size-in-half-open-state: 5
+        wait-duration-in-open-state: 60s
+        failure-rate-threshold: 50
+      listingServiceCircuitBreaker:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 10
+        ring-buffer-size-in-half-open-state: 5
+        wait-duration-in-open-state: 60s
+        failure-rate-threshold: 50

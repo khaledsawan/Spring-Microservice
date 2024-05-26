@@ -1,12 +1,12 @@
-package com.hexagon.transaction1service.controller;
+package com.hexagon.transactionservice.controller;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.hexagon.transaction1service.model.Transaction;
-import com.hexagon.transaction1service.repository.TransactionRepository;
+import com.hexagon.transactionservice.model.Transaction;
+import com.hexagon.transactionservice.repository.TransactionRepository;
 
 @CrossOrigin("*")
 @RestController

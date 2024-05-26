@@ -1,4 +1,4 @@
-package com.hexagon.transaction1service.model;
+package com.hexagon.transactionservice.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
