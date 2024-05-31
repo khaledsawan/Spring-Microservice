@@ -344,7 +344,7 @@
 			]
 		},
 		{
-			"name": "Sale C2B",
+			"name": "Sale B2C",
 			"item": [
 				{
 					"name": "create sale",
@@ -384,17 +384,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sellerId\": \"2\",\r\n    \"buyerId\": \"1\",\r\n    \"product\": \"Note 11 s\",\r\n    \"schoolId\": \"220$\"\r\n}\r\n"
+							"raw": "{\r\n    \"sellerId\": \"2\",\r\n    \"buyerId\": \"1\",\r\n    \"product\": \"Note 11 s\",\r\n    \"price\": \"220\"\r\n}\r\n"
 						},
 						"url": {
-							"raw": "http://localhost:8080/transaction",
+							"raw": "http://localhost:8085/sale",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8085",
 							"path": [
-								"transaction"
+								"sale"
 							]
 						}
 					},
@@ -425,14 +425,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/sale",
+							"raw": "http://localhost:8085/sale/external",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8085",
 							"path": [
-								"sale"
+								"sale",
+								"external"
 							]
 						}
 					},
@@ -473,6 +474,288 @@
 							"port": "8080",
 							"path": [
 								"transaction",
+								"consumer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listing C2C",
+			"item": [
+				{
+					"name": "create listing",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerId\": \"2\",\r\n    \"buyerId\": \"1\",\r\n    \"product\": \"Note 11 s\",\r\n    \"price\": \"220$\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/listing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get listing by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listing/seller/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listing",
+								"seller",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get listing by Company id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listing/seller/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listing",
+								"seller",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get listing by consumer id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/listing/consumer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"listing",
+								"consumer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "submission C2B",
+			"item": [
+				{
+					"name": "create listing",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerId\": \"2\",\r\n    \"buyerId\": \"1\",\r\n    \"product\": \"Note 11 s\",\r\n    \"price\": \"220$\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/submission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"submission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get submission by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/submission/seller/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"submission",
+								"seller",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all submission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/submission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"submission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get submission by Company id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/submission/seller/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"submission",
+								"seller",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get submission by consumer id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/submission/consumer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"submission",
 								"consumer",
 								"1"
 							]
