@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hexagon</groupId>
-	<artifactId>student-service</artifactId>
+	<artifactId>sale-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>student-service</name>
-	<description>Student Microservice</description>
+	<name>sale-service</name>
+	<description>Sale Microservice</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.1</spring-cloud.version>
