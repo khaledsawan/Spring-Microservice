@@ -5,8 +5,11 @@ package com.hexagon.customerservice.service;
 import com.hexagon.customerservice.dto.CustomerResponse;
 import com.hexagon.customerservice.model.Customer;
 import com.hexagon.customerservice.repository.CustomerRepository;
-import com.hexagon.customerservice.dto.Company;
 
+import lombok.Value;
+
+import com.hexagon.customerservice.dto.Company;
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +34,11 @@ public class CustomerService {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
+    
     public ResponseEntity<?> fetchCustomerById(int id){
         Optional<Customer> customer =  customerRepository.findById(id);
+        System.out.println("hi form  ");
         if(customer.isPresent()){
             Company comapny = restTemplate.getForObject("http://COMPANY-SERVICE/company/" + customer.get().getCompanyId(), Company.class);
             CustomerResponse customerResponse = new CustomerResponse(
@@ -41,6 +46,7 @@ public class CustomerService {
                     customer.get().getName(),
                     customer.get().getAge(),
                     customer.get().getGender(),
+                    
                     comapny
             );
             return new ResponseEntity<>(customerResponse, HttpStatus.OK);

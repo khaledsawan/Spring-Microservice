@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.hexagon.transactionservice.model.Transaction;
 import com.hexagon.transactionservice.repository.TransactionRepository;
+import com.netflix.discovery.EurekaClient;
 import com.hexagon.transactionservice.dto.CustomerResponse;
 
 @CrossOrigin("*")
@@ -24,7 +25,8 @@ public class TransactionController {
     private static final Logger logger = LoggerFactory.getLogger(TransactionController.class);
 
     @Autowired
-    public TransactionController(TransactionRepository repository, RestTemplate restTemplate) {
+    public TransactionController(TransactionRepository repository, RestTemplate restTemplate, EurekaClient ec) {
+        this.ec = ec;
         this.repository = repository;
         this.restTemplate = restTemplate;
     }
@@ -48,10 +50,12 @@ public class TransactionController {
     public List<Transaction> getTransactionsBySeller(@PathVariable String sellerId) {
         return repository.findBySellerId(sellerId);
     }
+    EurekaClient ec;
 
     @GetMapping("/buyer/{buyerId}")
-    public List<Transaction> getTransactionsByBuyer(@PathVariable String buyerId) {
-        return repository.findByBuyerId(buyerId);
+    public String getTransactionsByBuyer(@PathVariable String buyerId) {
+        return ec.getApplicationInfoManager().getInfo().getInstanceId();
+       // return repository.findByBuyerId(buyerId);
     }
 
     @GetMapping("/customer/{customerId}")
